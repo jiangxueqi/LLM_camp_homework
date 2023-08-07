@@ -1,7 +1,6 @@
-from domain.llm_model.llm_model import LLMModel
-
+# -*- coding: utf-8 -*-
 import openai
-
+from domain.llm_model.llm_model import LLMModel
 from infrastructure.utils.repeat import retries_on_exception
 
 
@@ -11,11 +10,9 @@ class OpenAIModel(LLMModel):
         self.model_type = model_type
         openai.api_key = api_key
 
-
-    def make_request(self, prompt):
+    def make_request(self, prompt="", messages=[]):
         if "gpt-3.5" in self.model_type or "gpt-4" in self.model_type:
-            message = self._format_translate_messages(prompt)
-            result = self.chat_completion_api(message)
+            result = self.chat_completion_api(messages)
         else:
             result = self.completion_api(prompt)
         if result:
@@ -56,24 +53,27 @@ class OpenAIModel(LLMModel):
                 model=self.model_type,
                 messages=messages,
         )
-        return response.choices[0].text
+        return response.choices[0].message['content']
 
     @retries_on_exception()
     def completion_api(self, prompt):
         response = openai.Completion.create(
             model=self.model_type,
-            prompt=prompt,
-            temperature=0,
-            max_tokens=2048
+            prompt = prompt,
+            temperature = 0,
+            max_tokens = 2048
         )
         return response.choices[0].text
 
 if __name__ == "__main__":
-    model_type = "text-davinci-003"
-    api_key = "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"
+    model_type = "gpt-3.5-turbo"
+    api_key = "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"
     openai_model = OpenAIModel(model_type, api_key)
 
-    prompt = "请把下面这段话翻译为中文：To be or not to be, that is the question."
-    result, is_translation = openai_model.make_request(prompt)
+    from domain.book.content import Content
+    text = "In the middle of difficulty lies opportunity."
+    target_langunage = "中文"
+    content = Content("text", text)
+    result, is_translation = openai_model.make_translate_request(content, target_langunage)
     if is_translation:
         print(result)

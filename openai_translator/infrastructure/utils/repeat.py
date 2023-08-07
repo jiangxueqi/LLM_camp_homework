@@ -2,7 +2,7 @@ from infrastructure.logger.logger import LOG
 import traceback
 import time
 
-def retries_on_exception(max_tries=3, wait_time=10, hook=None, hook_arg=None, hook_grain_size=1, exceptions=(Exception,)):
+def retries_on_exception(max_tries=3, wait_time=3, hook=None, hook_arg=None, hook_grain_size=1, exceptions=(Exception,)):
     def dec(func):
         def f2(*args, **kwargs):
             hook_grain_size_init = hook_grain_size
