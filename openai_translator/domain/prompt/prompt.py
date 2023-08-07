@@ -1,0 +1,4 @@
+
+
+class Prompt(object):
+    pass

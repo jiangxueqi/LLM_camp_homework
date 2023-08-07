@@ -1,4 +1,0 @@
-
-
-class LLMModel(object):
-    pass
