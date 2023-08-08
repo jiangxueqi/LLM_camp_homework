@@ -70,10 +70,9 @@ if __name__ == "__main__":
     api_key = ""
     openai_model = OpenAIModel(model_type, api_key)
 
-    from domain.book.content import Content
-    text = "In the middle of difficulty lies opportunity."
-    target_langunage = "法语"
-    content = Content("text", text)
-    result, is_translation = openai_model.make_translate_request(content, target_langunage)
-    if is_translation:
-        print(result)
+    # text = "In the middle of difficulty lies opportunity."
+    # target_langunage = "法语"
+    # content = Content("text", text)
+    # result, is_translation = openai_model.make_translate_request(content, target_langunage)
+    # if is_translation:
+    #     print(result)
