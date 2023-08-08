@@ -1,0 +1,57 @@
+2023-08-08 07:47:00.819 | ERROR    | infrastructure.utils.repeat:f2:16 - 捕获的异常：Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+2023-08-08 07:47:00.824 | ERROR    | infrastructure.utils.repeat:f2:17 - 异常具体信息：Traceback (most recent call last):
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\infrastructure\utils\repeat.py", line 14, in f2
+    return func(*args, **kwargs)
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\domain\llm_model\openai_model.py", line 52, in chat_completion_api
+    response = openai.ChatCompletion.create(
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\abstract\engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 230, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 624, in _interpret_response
+    self._interpret_response_line(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 687, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+
+2023-08-08 07:47:00.825 | INFO     | infrastructure.utils.repeat:f2:26 - 等待3s后重试
+2023-08-08 07:47:04.104 | ERROR    | infrastructure.utils.repeat:f2:16 - 捕获的异常：Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+2023-08-08 07:47:04.104 | ERROR    | infrastructure.utils.repeat:f2:17 - 异常具体信息：Traceback (most recent call last):
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\infrastructure\utils\repeat.py", line 14, in f2
+    return func(*args, **kwargs)
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\domain\llm_model\openai_model.py", line 52, in chat_completion_api
+    response = openai.ChatCompletion.create(
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\abstract\engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 230, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 624, in _interpret_response
+    self._interpret_response_line(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 687, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+
+2023-08-08 07:47:04.105 | INFO     | infrastructure.utils.repeat:f2:26 - 等待3s后重试
+2023-08-08 07:47:07.343 | ERROR    | infrastructure.utils.repeat:f2:16 - 捕获的异常：Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+2023-08-08 07:47:07.344 | ERROR    | infrastructure.utils.repeat:f2:17 - 异常具体信息：Traceback (most recent call last):
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\infrastructure\utils\repeat.py", line 14, in f2
+    return func(*args, **kwargs)
+  File "E:\AI大模型训练营\LLM_camp_homework\openai_translator\domain\llm_model\openai_model.py", line 52, in chat_completion_api
+    response = openai.ChatCompletion.create(
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\chat_completion.py", line 25, in create
+    return super().create(*args, **kwargs)
+  File "D:\Python\Python39\lib\site-packages\openai\api_resources\abstract\engine_api_resource.py", line 153, in create
+    response, _, api_key = requestor.request(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 230, in request
+    resp, got_stream = self._interpret_response(result, stream)
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 624, in _interpret_response
+    self._interpret_response_line(
+  File "D:\Python\Python39\lib\site-packages\openai\api_requestor.py", line 687, in _interpret_response_line
+    raise self.handle_error_response(
+openai.error.AuthenticationError: Incorrect API key provided: sk-BIBmr***************************************QKTg. You can find your API key at https://platform.openai.com/account/api-keys.
+
+2023-08-08 07:47:07.344 | ERROR    | infrastructure.utils.repeat:f2:29 - 重试超过最大次数：3
