@@ -10,7 +10,7 @@ class Prompt(object):
     def format_text_translate_messages(text, target_language):
         content = f"请将下面一段话翻译为{target_language}: {text}"
         messages = [{"role": "system",
-                     "content": "我希望你能担任翻译、拼写校对和修辞改进的角色。我会用任何语言和你交流，你会识别语言，将其翻译为准确优美的语言回答我，不要写解释。"},
+                     "content": "我希望你能担任翻译、拼写校对和修辞改进的角色。我会用任何语言和你交流，你会识别语言，将其翻译为准确优美的语言回答我，不要写解释。注意保留原有格式。"},
                     {"role": "user",
                      "content": content}]
         return messages
