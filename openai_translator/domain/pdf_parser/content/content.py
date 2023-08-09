@@ -1,4 +1,6 @@
-
+TEXT_CONTENT = "text"
+TABLE_CONTENT = "table"
+IMAGE_CONTENT = "image"
 
 class Content(object):
     def __init__(self, type):
