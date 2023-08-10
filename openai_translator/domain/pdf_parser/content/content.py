@@ -7,4 +7,4 @@ class Content(object):
         self.type = type
         self.original = None
         self.translation = None
-        self.is_translate = False
+        self.is_translated = False
