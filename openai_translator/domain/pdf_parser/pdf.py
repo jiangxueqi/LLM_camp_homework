@@ -1,7 +1,7 @@
 import os
 import pdfplumber
 
-from domain.pdf_parser.content.image import SAVE_DIR
+from domain.pdf_parser.content.image import SAVE_DIR, Image
 from domain.pdf_parser.content.table import Table
 from domain.pdf_parser.content.text import Text
 
@@ -10,22 +10,30 @@ class Pdf(object):
     def __init__(self, file_path):
         self.file_path = file_path
         self.metadata = None
+        self.page_contents = []
+        self.parse_pdf()
 
 
     def parse_pdf(self):
         with pdfplumber.open(self.file_path) as pdf:
             self.metadata = pdf.metadata
-            # pdf_page = pdf.pages[0]
-            # for pdf_page in pdf.pages:
-            #     pass
-            pdf_page = pdf.pages[1]
-            return self.parse_pdf_page(pdf_page)
-
+            for pdf_page in pdf.pages:
+                page_content = self.parse_pdf_page(pdf_page)
+                self.page_contents.append(page_content)
 
     def parse_pdf_page(self, pdf_page):
-        # text_contents = self.format_text_contets(pdf_page)
-        # table_contents = self.format_table_contents(pdf_page)
+        text_contents = self.format_text_contets(pdf_page)
+        table_contents = self.format_table_contents(pdf_page)
         image_content = self.format_image_contents(pdf_page)
+        return self._format_contents(text_contents, table_contents, image_content)
+
+    def _format_contents(self, text_contents, table_contents, image_contents):
+        contents = []
+        contents.extend(text_contents)
+        contents.extend(table_contents)
+        contents.extend(image_contents)
+        contents.sort(key=lambda content:content.top)
+        return contents
 
     def format_text_contets(self, pdf_page):
         text_contents = []
@@ -132,7 +140,7 @@ class Pdf(object):
             image_name = f"{page_num}_{index+1}.png"
             self._save_image(im, image_name)
             raw_image_content = {"image_name":image_name, "top":top}
-            image_contents.append(raw_image_content)
+            image_contents.append(Image(raw_image_content))
         return image_contents
 
     def _save_image(self, im, image_name):
@@ -148,4 +156,4 @@ if __name__ == "__main__":
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     test_pdf_path = os.path.abspath(os.path.join(curr_dir, "../../tests/test.pdf"))
     pdf = Pdf(test_pdf_path)
-    pdf.parse_pdf()
+    print(pdf.page_contents)
