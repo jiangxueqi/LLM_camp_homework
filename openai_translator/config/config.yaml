@@ -1,12 +1,25 @@
 OpenAIModel:
   model: "gpt-3.5-turbo"
-  api_key: "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"
+  api_key: ""
 
 GLMModel:
   model_url: "your_chatglm_model_url"
   timeout: 300
 
-Writer:
-  file_name: "test.pdf"
-  file_format: "markdown"
+PDF_STYLE:
+  font_name: "SimSun"
+  space: 20
+  grid_color: "black"
+  space_before: 5
+  space_after: 5
+  text_style:
+    leading: 15
+  table_style:
+    head_background_color: "grey"
+    head_text_color: "whitesmoke"
+    body_background_color: "beige"
+
+
+
+
 
