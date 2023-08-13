@@ -19,12 +19,6 @@ class OpenAIModel(LLMModel):
             return result.strip(), True
         return "", False
 
-
-    def _format_translate_messages(self, prompt):
-        messages = [{"role":"system", "content":"我希望你能担任翻译、拼写校对和修辞改进的角色。我会用任何语言和你交流，你会识别语言，将其翻译为优美的语言回答我。"},
-                    {"role":"user", "content":f"{prompt}"}]
-        return messages
-
     @retries_on_exception()
     def chat_completion_api(self, messages, functions=None, function_call_name=None):
         if functions:
